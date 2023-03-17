@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<header>
+  <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="/static/style.css" />
+</header>
+
+<body>
+  <h1>Index</h1>
+  <p id="test"></p>
+  <h1 id="open"></h1>
+  <div class="frame">
+    <button class="custom-btn btn-13" id="toggle">Toggle Open</button>
+  </div>
+
+  <script type="text/javascript">
+    var actuallog = console.log
+
+    console.log = (...args) => {
+      open(args)
+      args.map(arg => document.querySelector("#toggle_open").innerHTML = arg)
+    }
+
+    function open(text) {
+      if (text == "true") {
+        document.querySelector("#open").innerHTML = "OPEN";
+        document.querySelector("#open").style.color = green;
+      } else {
+        document.querySelector("#open").innerHTML = "CLOSED";
+        document.querySelector("#open").style.color = red;
+      }
+    }
+    fetch('/isopen')
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (text) {
+        let isOpen = text.open
+        console.log(isOpen)
+      })
+    document.querySelector("#toggle").addEventListener("click", (e) => {
+      e.preventDefault();
+      fetch('/admin/toggle_open')
+        .then(function (response) {
+          return response.json();
+        })
+        .then(function (text) {
+          let isOpen = text.open
+          console.log(isOpen)
+        })
+    });
+
+  </script>
+</body>
+
+</html>
