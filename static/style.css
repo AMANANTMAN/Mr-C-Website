@@ -6,13 +6,13 @@ h1 {
     position: relative;
     text-align: center;
     color: #353535;
-    font-size: 50px;
+    font-size: 100px;
     font-family: "Cormorant Garamond", serif;
 }
 
 #open {
     color: green;
-    font-size: 40px;
+    font-size: 80px;
     font-family: "Cormorant Garamond", serif;
     text-align: center;
     position: relative;
