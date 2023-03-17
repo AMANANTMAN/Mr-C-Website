@@ -3,6 +3,7 @@ body {
 }
 
 h1 {
+    padding-top: 10px;
     position: relative;
     text-align: center;
     color: #353535;
